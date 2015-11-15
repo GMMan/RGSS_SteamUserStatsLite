@@ -4,13 +4,13 @@ class SteamworksLite
   
   def initialize
     @initted = @@dll_SteamAPI_Init.call % 256 != 0
-	@i_user_stats = @@dll_SteamUserStats.call if @initted
-	@initted
+    @i_user_stats = @@dll_SteamUserStats.call if @initted
+    @initted
   end
   
   def shutdown
     @i_user_stats = nil if @initted
-	@initted = false
+    @initted = false
   end
   
   def initted?
@@ -28,25 +28,25 @@ class SteamworksLite
   def set_achievement(id)
     if initted?
       ok = @@dll_SteamAPI_ISteamUserStats_SetAchievement.call(@i_user_stats, id) % 256 != 0
-	  ok = @@dll_SteamAPI_SteamAPI_ISteamUserStats_StoreStats.call(@i_user_stats) % 256 != 0 && ok
-	else
-	  false
-	end
+      ok = @@dll_SteamAPI_SteamAPI_ISteamUserStats_StoreStats.call(@i_user_stats) % 256 != 0 && ok
+    else
+      false
+    end
   end
   
   def clear_achievement(id)
     if initted?
       ok = @@dll_SteamAPI_ISteamUserStats_ClearAchievement.call(@i_user_stats, id) % 256 != 0
-	  ok = @@dll_SteamAPI_SteamAPI_ISteamUserStats_StoreStats.call(@i_user_stats) % 256 != 0 && ok
-	else
-	  false
-	end	
+      ok = @@dll_SteamAPI_SteamAPI_ISteamUserStats_StoreStats.call(@i_user_stats) % 256 != 0 && ok
+    else
+      false
+    end    
   end
   
   private
   def self.is_64bit?
     # Probably very bad detection of whether current runtime is 64-bit
-	(/x64/ =~ RUBY_PLATFORM) != nil
+    (/x64/ =~ RUBY_PLATFORM) != nil
   end
   
   def self.steam_dll_name
