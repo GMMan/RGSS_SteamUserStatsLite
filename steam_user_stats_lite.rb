@@ -283,7 +283,7 @@ class SteamUserStatsLite
   end
   
   def self.pack_double(val)
-    # Packs number to a string, then unpack to an an array of two ints
+    # Packs number to a string, then unpack to an array of two ints
     inter = [val].pack 'd'
     inter.unpack 'II'
   end
