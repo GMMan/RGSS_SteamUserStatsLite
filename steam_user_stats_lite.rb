@@ -42,6 +42,8 @@ class SteamUserStatsLite
   end
   
   # Runs Steam callbacks.
+  #
+  # @return [void]
   def update
     @@dll_SteamAPI_RunCallbacks.call if initted?
   end
