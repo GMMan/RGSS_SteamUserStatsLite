@@ -1,3 +1,29 @@
+# cyanic's Quick and Easy Steamworks Achievements Integration for Ruby
+# 11/14/15
+#
+# Drop steam_api.dll into the root of your project. Requires Steamworks SDK version >= 1.32.
+#
+# Examples:
+#
+# - Initialize Steamworks
+# steam = SteamworksLite.new
+#
+# - Restart if Steamworks isn't available
+# SteamworksLite.restart_app_if_necessary 480
+#
+# - Check if Steamworks is initted
+# is_initted = steam.initted?
+#
+# - Set achievement
+# steam.set_achievement 'YOUR_ACH_ID_HERE'
+#
+# - Unset achievement
+# steam.clear_achievement 'YOUR_ACH_ID_HERE'
+#
+# - Do this whereever it's convenient to update things
+# steam.update
+#
+
 require 'Win32API'
 
 class SteamworksLite
@@ -17,7 +43,7 @@ class SteamworksLite
     @initted
   end
   
-  def restart_app_if_necessary(app_id)
+  def self.restart_app_if_necessary(app_id)
     @@dll_SteamAPI_RestartAppIfNecessary.call(app_id) % 256 != 0
   end
   
