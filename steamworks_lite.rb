@@ -1,15 +1,19 @@
 # cyanic's Quick and Easy Steamworks Achievements Integration for Ruby
-# 11/14/15
+# 11/15/15
 #
 # Drop steam_api.dll into the root of your project. Requires Steamworks SDK version >= 1.32.
 #
 # Examples:
 #
+# - Relaunch from Steam if Steamworks isn't available
+# SteamworksLite.restart_app_if_necessary 480
+#
 # - Initialize Steamworks
 # steam = SteamworksLite.new
 #
-# - Restart if Steamworks isn't available
-# SteamworksLite.restart_app_if_necessary 480
+# - However, for your convenience, an instance of SteamworksLite has already been created for you.
+#   Access it like this.
+# steam = SteamworksLite.instance
 #
 # - Check if Steamworks is initted
 # is_initted = steam.initted?
@@ -23,8 +27,9 @@
 # - Do this whereever it's convenient to update things
 # steam.update
 #
-
-require 'Win32API'
+# - Shutdown Steamworks
+# steam.shutdown
+#
 
 class SteamworksLite
   
@@ -35,8 +40,11 @@ class SteamworksLite
   end
   
   def shutdown
-    @i_user_stats = nil if @initted
-    @initted = false
+    if @initted
+      @i_user_stats = nil
+      @@dll_SteamAPI_Shutdown.call
+      @initted = false
+    end    
   end
   
   def initted?
@@ -54,7 +62,7 @@ class SteamworksLite
   def set_achievement(id)
     if initted?
       ok = @@dll_SteamAPI_ISteamUserStats_SetAchievement.call(@i_user_stats, id) % 256 != 0
-      ok = @@dll_SteamAPI_SteamAPI_ISteamUserStats_StoreStats.call(@i_user_stats) % 256 != 0 && ok
+      ok = @@dll_SteamAPI_ISteamUserStats_StoreStats.call(@i_user_stats) % 256 != 0 && ok
     else
       false
     end
@@ -63,10 +71,14 @@ class SteamworksLite
   def clear_achievement(id)
     if initted?
       ok = @@dll_SteamAPI_ISteamUserStats_ClearAchievement.call(@i_user_stats, id) % 256 != 0
-      ok = @@dll_SteamAPI_SteamAPI_ISteamUserStats_StoreStats.call(@i_user_stats) % 256 != 0 && ok
+      ok = @@dll_SteamAPI_ISteamUserStats_StoreStats.call(@i_user_stats) % 256 != 0 && ok
     else
       false
     end    
+  end
+  
+  def self.instance
+    @@instance
   end
   
   private
@@ -82,10 +94,13 @@ class SteamworksLite
   # Function imports
   @@dll_SteamAPI_RestartAppIfNecessary = Win32API.new(self.steam_dll_name, 'SteamAPI_RestartAppIfNecessary', 'I', 'I')
   @@dll_SteamAPI_Init = Win32API.new(self.steam_dll_name, 'SteamAPI_Init', '', 'I')
+  @@dll_SteamAPI_Shutdown = Win32API.new(self.steam_dll_name, 'SteamAPI_Shutdown', '', 'V')
   @@dll_SteamAPI_RunCallbacks = Win32API.new(self.steam_dll_name, 'SteamAPI_RunCallbacks', '', 'V')
   @@dll_SteamUserStats = Win32API.new(self.steam_dll_name, 'SteamUserStats', '', 'P')
-  @@dll_SteamAPI_ISteamUserStats_SetAchievement = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_SetAchievement', 'LS', 'I')
-  @@dll_SteamAPI_ISteamUserStats_ClearAchievement = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_ClearAchievement', 'LS', 'I')
-  @@dll_SteamAPI_SteamAPI_ISteamUserStats_StoreStats = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_StoreStats', 'L', 'I')
+  @@dll_SteamAPI_ISteamUserStats_SetAchievement = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_SetAchievement', 'PP', 'I')
+  @@dll_SteamAPI_ISteamUserStats_ClearAchievement = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_ClearAchievement', 'PP', 'I')
+  @@dll_SteamAPI_ISteamUserStats_StoreStats = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_StoreStats', 'P', 'I')
+  
+  @@instance = self.new
 
 end
