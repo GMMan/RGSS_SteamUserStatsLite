@@ -3,6 +3,8 @@
 #
 # Drop steam_api.dll into the root of your project. Requires Steamworks SDK version >= 1.32.
 #
+# "Miller complained about how hard achievements were to implement in C++, so this was born."
+#
 
 # A simple class for Steamworks UserStats integration.
 #
