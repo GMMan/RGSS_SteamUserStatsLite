@@ -15,7 +15,10 @@ class SteamUserStatsLite
   # Instantiates a new instance of `SteamUserStatsLite`.
   def initialize
     @initted = @@dll_SteamAPI_Init.call % 256 != 0
-    @i_user_stats = @@dll_SteamUserStats.call if @initted
+    if @initted
+      @i_apps = @@dll_SteamApps.call
+      @i_user_stats = @@dll_SteamUserStats.call
+    end
   end
   
   # Shuts down Steamworks.
@@ -23,6 +26,7 @@ class SteamUserStatsLite
   # @return [void]
   def shutdown
     if @initted
+      @i_apps = nil
       @i_user_stats = nil
       @@dll_SteamAPI_Shutdown.call
       @initted = false
@@ -49,6 +53,29 @@ class SteamUserStatsLite
   # @return [void]
   def update
     @@dll_SteamAPI_RunCallbacks.call if initted?
+  end
+  
+  # Checks if current app is owned.
+  #
+  # @return [true, false, nil] Whether the current user has a license for the current app. `nil` is returned if ownership status can't be retrieved.
+  def is_subscribed
+    if initted?
+      @@dll_SteamAPI_ISteamApps_BIsSubscribed.call(@i_apps) % 256 != 0
+    else
+      nil
+    end
+  end
+  
+  # Checks if a DLC is installed.
+  #
+  # @param [Integer] The app ID of the DLC to check.
+  # @return [true, false, nil] Whether the DLC is installed. `nil` is returned if the installation status can't be retrieved.
+  def is_dlc_installed(app_id)
+    if initted?
+      @@dll_SteamAPI_ISteamApps_BIsDlcInstalled.call(@i_apps, app_id) % 256 != 0
+    else
+      nil
+    end
   end
   
   # Pulls current user's stats from Steam.
@@ -263,17 +290,20 @@ class SteamUserStatsLite
   @@dll_SteamAPI_ISteamUserStats_GetStat = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_GetStat', 'PPP', 'I')
   @@dll_SteamAPI_ISteamUserStats_GetStat0 = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_GetStat0', 'PPP', 'I')
   @@dll_SteamAPI_ISteamUserStats_SetStat = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_SetStat', 'PPL', 'I')
-  @@dll_SteamAPI_ISteamUserStats_SetStat0 = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_SetStat0', 'PPN', 'I')
-  @@dll_SteamAPI_ISteamUserStats_UpdateAvgRateStat = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_UpdateAvgRateStat', 'PPNNN', 'I')
+  @@dll_SteamAPI_ISteamUserStats_SetStat0 = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_SetStat0', 'PPI', 'I')
+  @@dll_SteamAPI_ISteamUserStats_UpdateAvgRateStat = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_UpdateAvgRateStat', 'PPIII', 'I')
   @@dll_SteamAPI_ISteamUserStats_GetAchievement = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_GetAchievement', 'PPP', 'I')
   @@dll_SteamAPI_ISteamUserStats_SetAchievement = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_SetAchievement', 'PP', 'I')
   @@dll_SteamAPI_ISteamUserStats_ClearAchievement = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_ClearAchievement', 'PP', 'I')
   @@dll_SteamAPI_ISteamUserStats_GetAchievementAndUnlockTime = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_GetAchievementAndUnlockTime', 'PPPP', 'I')
   @@dll_SteamAPI_ISteamUserStats_GetAchievementDisplayAttribute = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_GetAchievementDisplayAttribute', 'PPP', 'P')
-  @@dll_SteamAPI_ISteamUserStats_GetNumAchievements = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_GetNumAchievements', 'P', 'N')
-  @@dll_SteamAPI_ISteamUserStats_GetAchievementName = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_GetAchievementName', 'PN', 'P')
+  @@dll_SteamAPI_ISteamUserStats_GetNumAchievements = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_GetNumAchievements', 'P', 'I')
+  @@dll_SteamAPI_ISteamUserStats_GetAchievementName = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_GetAchievementName', 'PI', 'P')
   @@dll_SteamAPI_ISteamUserStats_StoreStats = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_StoreStats', 'P', 'I')
-  @@dll_SteamAPI_ISteamUserStats_ResetAllStats = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_ResetAllStats', 'PN', 'I')
+  @@dll_SteamAPI_ISteamUserStats_ResetAllStats = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_ResetAllStats', 'PI', 'I')
+  @@dll_SteamApps = Win32API.new(self.steam_dll_name, 'SteamApps', '', 'P')
+  @@dll_SteamAPI_ISteamApps_BIsSubscribed = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamApps_BIsSubscribed', 'P', 'I')
+  @@dll_SteamAPI_ISteamApps_BIsDlcInstalled = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamApps_BIsDlcInstalled', 'PI', 'I')
   
   @@instance = self.new
   
