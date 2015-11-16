@@ -581,6 +581,9 @@ $(generateTOC);
   
 <p>cyanic&#39;s Quick and Easy Steamworks Achievements Integration for Ruby</p>
 
+<p><a
+href="https://github.com/GMMan/RGSS_SteamUserStatsLite">github.com/GMMan/RGSS_SteamUserStatsLite</a></p>
+
 <p>r3 11/15/15</p>
 
 <p>Drop steam_api.dll into the root of your project. Requires Steamworks SDK
@@ -1206,13 +1209,13 @@ this was born.”</p>
       <pre class="lines">
 
 
-15
 16
 17
-18</pre>
+18
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 16</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
   <span class='ivar'>@initted</span> <span class='op'>=</span> <span class='cvar'>@@dll_SteamAPI_Init</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span> <span class='op'>%</span> <span class='int'>256</span> <span class='op'>!=</span> <span class='int'>0</span>
@@ -1274,12 +1277,12 @@ this was born.”</p>
       <pre class="lines">
 
 
-241
 242
-243</pre>
+243
+244</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 241</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 242</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_instance'>instance</span>
   <span class='cvar'>@@instance</span>
@@ -1353,12 +1356,12 @@ this was born.”</p>
       <pre class="lines">
 
 
-42
 43
-44</pre>
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_restart_app_if_necessary'>restart_app_if_necessary</span><span class='lparen'>(</span><span class='id identifier rubyid_app_id'>app_id</span><span class='rparen'>)</span>
   <span class='cvar'>@@dll_SteamAPI_RestartAppIfNecessary</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_app_id'>app_id</span><span class='rparen'>)</span> <span class='op'>%</span> <span class='int'>256</span> <span class='op'>!=</span> <span class='int'>0</span>
@@ -1438,17 +1441,17 @@ this was born.”</p>
       <pre class="lines">
 
 
-165
 166
 167
 168
 169
 170
 171
-172</pre>
+172
+173</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 165</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 166</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_clear_achievement'>clear_achievement</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -1528,7 +1531,6 @@ retrieved.</p>
       <pre class="lines">
 
 
-134
 135
 136
 137
@@ -1536,10 +1538,11 @@ retrieved.</p>
 139
 140
 141
-142</pre>
+142
+143</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 134</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 135</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_achievement'>get_achievement</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -1620,7 +1623,6 @@ unlocked.</p>
       <pre class="lines">
 
 
-178
 179
 180
 181
@@ -1629,10 +1631,11 @@ unlocked.</p>
 184
 185
 186
-187</pre>
+187
+188</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 178</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 179</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_achievement_and_unlock_time'>get_achievement_and_unlock_time</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -1729,16 +1732,16 @@ unlocked.</p>
       <pre class="lines">
 
 
-194
 195
 196
 197
 198
 199
-200</pre>
+200
+201</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 194</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 195</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_achievement_display_attribute'>get_achievement_display_attribute</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -1816,16 +1819,16 @@ unlocked.</p>
       <pre class="lines">
 
 
-217
 218
 219
 220
 221
 222
-223</pre>
+223
+224</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 217</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 218</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_achievement_name'>get_achievement_name</span><span class='lparen'>(</span><span class='id identifier rubyid_achievement'>achievement</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -1883,16 +1886,16 @@ unlocked.</p>
       <pre class="lines">
 
 
-205
 206
 207
 208
 209
 210
-211</pre>
+211
+212</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 205</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 206</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_num_achievements'>get_num_achievements</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -1970,7 +1973,6 @@ unlocked.</p>
       <pre class="lines">
 
 
-82
 83
 84
 85
@@ -1978,10 +1980,11 @@ unlocked.</p>
 87
 88
 89
-90</pre>
+90
+91</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 82</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 83</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_stat_float'>get_stat_float</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -2061,7 +2064,6 @@ unlocked.</p>
       <pre class="lines">
 
 
-68
 69
 70
 71
@@ -2069,10 +2071,11 @@ unlocked.</p>
 73
 74
 75
-76</pre>
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 69</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_stat_int'>get_stat_int</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -2132,12 +2135,12 @@ unlocked.</p>
       <pre class="lines">
 
 
-34
 35
-36</pre>
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initted?'>initted?</span>
   <span class='ivar'>@initted</span>
@@ -2191,16 +2194,16 @@ unlocked.</p>
       <pre class="lines">
 
 
-56
 57
 58
 59
 60
 61
-62</pre>
+62
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 57</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_request_current_stats'>request_current_stats</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -2278,17 +2281,17 @@ unlocked.</p>
       <pre class="lines">
 
 
-229
 230
 231
 232
 233
 234
 235
-236</pre>
+236
+237</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 229</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 230</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reset_all_stats'>reset_all_stats</span><span class='lparen'>(</span><span class='id identifier rubyid_achievements_too'>achievements_too</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -2377,17 +2380,17 @@ unlocked.</p>
       <pre class="lines">
 
 
-152
 153
 154
 155
 156
 157
 158
-159</pre>
+159
+160</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 152</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 153</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_achievement'>set_achievement</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -2492,7 +2495,6 @@ unlocked.</p>
       <pre class="lines">
 
 
-101
 102
 103
 104
@@ -2503,10 +2505,11 @@ unlocked.</p>
 109
 110
 111
-112</pre>
+112
+113</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 101</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 102</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_stat'>set_stat</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_val'>val</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -2551,16 +2554,16 @@ unlocked.</p>
       <pre class="lines">
 
 
-23
 24
 25
 26
 27
 28
-29</pre>
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_shutdown'>shutdown</span>
   <span class='kw'>if</span> <span class='ivar'>@initted</span>
@@ -2600,12 +2603,12 @@ unlocked.</p>
       <pre class="lines">
 
 
-49
 50
-51</pre>
+51
+52</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
   <span class='cvar'>@@dll_SteamAPI_RunCallbacks</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span> <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -2711,7 +2714,6 @@ unlocked.</p>
       <pre class="lines">
 
 
-120
 121
 122
 123
@@ -2719,10 +2721,11 @@ unlocked.</p>
 125
 126
 127
-128</pre>
+128
+129</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 120</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 121</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_avg_rate_stat'>update_avg_rate_stat</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_count_this_session'>count_this_session</span><span class='comma'>,</span> <span class='id identifier rubyid_session_length'>session_length</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -2744,7 +2747,7 @@ unlocked.</p>
     </div>
 
     <div id="footer">
-  Generated on Sun Nov 15 18:05:14 2015 by
+  Generated on Sun Nov 15 18:27:48 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.2.3).
 </div>
