@@ -1,6 +1,6 @@
 # cyanic's Quick and Easy Steamworks Achievements Integration for Ruby  
 # https://github.com/GMMan/RGSS_SteamUserStatsLite  
-# r3 11/15/15
+# r3.1 11/15/15
 #
 # Drop steam_api.dll into the root of your project. Requires Steamworks SDK version >= 1.32.
 #
