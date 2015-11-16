@@ -5,11 +5,11 @@ Here's how to use the script:
 * Copy steam_api.dll from the Steamworks SDK to your project root folder.
 * Paste the script into the script editor.
 * In an event script or wherever you need it, write the following:
-    ```
-	steam = SteamUserStatsLite.instance
-	steam.set_achievement 'YOUR_ACH_ID_HERE'
-	steam.update
-	```
+
+        steam = SteamUserStatsLite.instance
+        steam.set_achievement 'YOUR_ACH_ID_HERE'
+        steam.update
+
 * If that second line returns true, the achievement has been set. Otherwise, you'll want to check if you set up achievements properly on Steam.
 
 Please go to https://gmman.github.io/RGSS_SteamUserStatsLite for documentation.
