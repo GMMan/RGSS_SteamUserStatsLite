@@ -7,6 +7,9 @@
 # "Miller complained about how hard achievements were to implement in C++, so this was born."
 #
 
+$imported ||= {}
+$imported['cyanic-SteamUserStatsLite'] = 3.1 # Slightly unorthodox, it's a version number.
+
 # A simple class for Steamworks UserStats integration.
 #
 # @author cyanic
