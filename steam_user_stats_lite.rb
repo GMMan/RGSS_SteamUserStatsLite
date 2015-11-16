@@ -68,7 +68,7 @@ class SteamUserStatsLite
   
   # Checks if a DLC is installed.
   #
-  # @param [Integer] The app ID of the DLC to check.
+  # @param app_id [Integer] The app ID of the DLC to check.
   # @return [true, false, nil] Whether the DLC is installed. `nil` is returned if the installation status can't be retrieved.
   def is_dlc_installed(app_id)
     if initted?
