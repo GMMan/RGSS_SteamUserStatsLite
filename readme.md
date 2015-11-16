@@ -12,4 +12,4 @@ Here's how to use the script:
 	```
 * If that second line returns true, the achievement has been set. Otherwise, you'll want to check if you set up achievements properly on Steam.
 
-Please see code for documentation.
+Please go to https://gmman.github.io/RGSS_SteamUserStatsLite for documentation.
