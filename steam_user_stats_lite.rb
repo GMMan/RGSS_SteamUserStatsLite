@@ -288,7 +288,7 @@ class SteamUserStatsLite
   @@dll_SteamAPI_Init = Win32API.new(self.steam_dll_name, 'SteamAPI_Init', '', 'I')
   @@dll_SteamAPI_Shutdown = Win32API.new(self.steam_dll_name, 'SteamAPI_Shutdown', '', 'V')
   @@dll_SteamAPI_RunCallbacks = Win32API.new(self.steam_dll_name, 'SteamAPI_RunCallbacks', '', 'V')
-  @@dll_SteamUserStats = Win32API.new(self.steam_dll_name, 'SteamUserStats', '', 'P')
+  @@dll_SteamUserStats = Win32API.new(self.steam_dll_name, 'SteamUserStats', '', 'N')
   @@dll_SteamAPI_ISteamUserStats_RequestCurrentStats = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_RequestCurrentStats', 'P', 'I')
   @@dll_SteamAPI_ISteamUserStats_GetStat = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_GetStat', 'PPP', 'I')
   @@dll_SteamAPI_ISteamUserStats_GetStat0 = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_GetStat0', 'PPP', 'I')
@@ -304,7 +304,7 @@ class SteamUserStatsLite
   @@dll_SteamAPI_ISteamUserStats_GetAchievementName = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_GetAchievementName', 'PI', 'P')
   @@dll_SteamAPI_ISteamUserStats_StoreStats = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_StoreStats', 'P', 'I')
   @@dll_SteamAPI_ISteamUserStats_ResetAllStats = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_ResetAllStats', 'PI', 'I')
-  @@dll_SteamApps = Win32API.new(self.steam_dll_name, 'SteamApps', '', 'P')
+  @@dll_SteamApps = Win32API.new(self.steam_dll_name, 'SteamApps', '', 'N')
   @@dll_SteamAPI_ISteamApps_BIsSubscribed = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamApps_BIsSubscribed', 'P', 'I')
   @@dll_SteamAPI_ISteamApps_BIsDlcInstalled = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamApps_BIsDlcInstalled', 'PI', 'I')
   
