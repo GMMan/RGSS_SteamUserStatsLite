@@ -1,6 +1,6 @@
 # cyanic's Quick and Easy Steamworks Achievements Integration for Ruby  
 # https://github.com/GMMan/RGSS_SteamUserStatsLite  
-# r3.1 11/15/15
+# r3.2 03/12/16
 #
 # Drop steam_api.dll into the root of your project. Requires Steamworks SDK version >= 1.32.
 #
@@ -8,7 +8,7 @@
 #
 
 $imported ||= {}
-$imported['cyanic-SteamUserStatsLite'] = 3.1 # Slightly unorthodox, it's a version number.
+$imported['cyanic-SteamUserStatsLite'] = 3.2 # Slightly unorthodox, it's a version number.
 
 # A simple class for Steamworks UserStats integration.
 #
