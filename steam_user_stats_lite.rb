@@ -18,10 +18,6 @@ class SteamAPIContext
   STEAMUSERSTATS_INTERFACE_VERSION = 'STEAMUSERSTATS_INTERFACE_VERSION011'
   STEAMAPPS_INTERFACE_VERSION = 'STEAMAPPS_INTERFACE_VERSION008'
 
-  private_constant :STEAMCLIENT_INTERFACE_VERSION
-  private_constant :STEAMUSERSTATS_INTERFACE_VERSION
-  private_constant :STEAMAPPS_INTERFACE_VERSION
-
   # Instantiates a new instance of `SteamAPIContext`.
   def initialize
     @initted = false
