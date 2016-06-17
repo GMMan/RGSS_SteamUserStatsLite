@@ -579,20 +579,15 @@ $(generateTOC);
       <h1>Documentation by YARD 0.8.7.6</h1>
       <div id="readme">
   
-<p>cyanic&#39;s Quick and Easy Steamworks Achievements Integration for Ruby</p>
-
-<p><a
-href="https://github.com/GMMan/RGSS_SteamUserStatsLite">github.com/GMMan/RGSS_SteamUserStatsLite</a></p>
-
-<p>r3.1 11/15/15</p>
+<p>cyanic&#39;s Quick and Easy Steamworks Achievements Integration for Ruby <a
+href="https://github.com/GMMan/RGSS_SteamUserStatsLite">github.com/GMMan/RGSS_SteamUserStatsLite</a>
+r4 06/16/16</p>
 
 <p>Drop steam_api.dll into the root of your project. Requires Steamworks SDK
-version &gt;= 1.32.</p>
+version &gt;= 1.37.</p>
 
 <p>“Miller complained about how hard achievements were to implement in C++, so
 this was born.”</p>
-
-<p>A simple class for Steamworks UserStats integration.</p>
 
 </div><h1>Top Level Namespace
   
@@ -618,7 +613,7 @@ this was born.”</p>
     
   
     
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="index.html" title="SteamUserStatsLite (class)">SteamUserStatsLite</a></span>
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="index.html" title="SteamAPIContext (class)">SteamAPIContext</a></span>, <span class='object_link'><a href="index.html" title="SteamUserStatsLite (class)">SteamUserStatsLite</a></span>
     
   
 </p>
@@ -630,6 +625,518 @@ this was born.”</p>
 
 
 
+
+
+<h1>Class: SteamAPIContext
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">SteamAPIContext</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">steam_user_stats_lite.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>A context class to get Steamworks pointers to interfaces.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Author:</p>
+<ul class="author">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>cyanic</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+  <h2>Constant Summary</h2>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (SteamAPIContext) <strong>initialize</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Instantiates a new instance of `SteamAPIContext`.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initted%3F-instance_method" title="#initted? (instance method)">- (true, false) <strong>initted?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Checks if context is initialized.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#steam_apps-instance_method" title="#steam_apps (instance method)">- (Fixnum<sup>?</sup>) <strong>steam_apps</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Gets the ISteamApps pointer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#steam_client-instance_method" title="#steam_client (instance method)">- (Fixnum<sup>?</sup>) <strong>steam_client</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Gets the ISteamClient pointer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#steam_user_stats-instance_method" title="#steam_user_stats (instance method)">- (Fixnum<sup>?</sup>) <strong>steam_user_stats</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Gets the ISteamUserStats pointer.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="SteamAPIContext (class)">SteamAPIContext</a></span></tt>) <strong>initialize</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Instantiates a new instance of `SteamAPIContext`.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 26</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
+  <span class='ivar'>@initted</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='ivar'>@h_steam_user</span> <span class='op'>=</span> <span class='cvar'>@@dll_SteamAPI_GetHSteamUser</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='ivar'>@h_steam_pipe</span> <span class='op'>=</span> <span class='cvar'>@@dll_SteamAPI_GetHSteamPipe</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='rparen'>)</span> <span class='op'>!=</span> <span class='int'>0</span>
+    <span class='kw'>return</span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='ivar'>@steam_client</span> <span class='op'>=</span> <span class='cvar'>@@dll_SteamInternal_CreateInterface</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='const'>STEAMCLIENT_INTERFACE_VERSION</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0</span>
+    <span class='kw'>return</span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='ivar'>@steam_user_stats</span> <span class='op'>=</span> <span class='cvar'>@@dll_SteamAPI_ISteamClient_GetISteamUserStats</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='ivar'>@steam_client</span><span class='comma'>,</span> <span class='ivar'>@h_steam_user</span><span class='comma'>,</span> <span class='ivar'>@h_steam_pipe</span><span class='comma'>,</span> <span class='const'>STEAMUSERSTATS_INTERFACE_VERSION</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0</span>
+    <span class='kw'>return</span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='ivar'>@steam_apps</span> <span class='op'>=</span> <span class='cvar'>@@dll_SteamAPI_ISteamClient_GetISteamApps</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='ivar'>@steam_client</span><span class='comma'>,</span> <span class='ivar'>@h_steam_user</span><span class='comma'>,</span> <span class='ivar'>@h_steam_pipe</span><span class='comma'>,</span> <span class='const'>STEAMAPPS_INTERFACE_VERSION</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0</span>
+
+    <span class='ivar'>@initted</span> <span class='op'>=</span> <span class='kw'>true</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="initted?-instance_method">
+  
+    - (<tt>true</tt>, <tt>false</tt>) <strong>initted?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Checks if context is initialized.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether context is initialized.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+41
+42
+43</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 41</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initted?'>initted?</span>
+  <span class='ivar'>@initted</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="steam_apps-instance_method">
+  
+    - (<tt>Fixnum</tt><sup>?</sup>) <strong>steam_apps</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Gets the ISteamApps pointer</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Fixnum</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The ISteamUserStats pointer if context is initialized, otherwise `nil`.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+62
+63
+64</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 62</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_steam_apps'>steam_apps</span>
+  <span class='ivar'>@steam_apps</span> <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="steam_client-instance_method">
+  
+    - (<tt>Fixnum</tt><sup>?</sup>) <strong>steam_client</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Gets the ISteamClient pointer</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Fixnum</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The ISteamClient pointer if context is initialized, otherwise `nil`.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+48
+49
+50</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 48</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_steam_client'>steam_client</span>
+  <span class='ivar'>@steam_client</span> <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="steam_user_stats-instance_method">
+  
+    - (<tt>Fixnum</tt><sup>?</sup>) <strong>steam_user_stats</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Gets the ISteamUserStats pointer</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Fixnum</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The ISteamUserStats pointer if context is initialized, otherwise `nil`.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+55
+56
+57</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 55</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_steam_user_stats'>steam_user_stats</span>
+  <span class='ivar'>@steam_user_stats</span> <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
 
 
 <h1>Class: SteamUserStatsLite
@@ -1257,22 +1764,32 @@ this was born.”</p>
       <pre class="lines">
 
 
-16
-17
-18
-19
-20
-21
-22</pre>
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 90</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
-  <span class='ivar'>@initted</span> <span class='op'>=</span> <span class='cvar'>@@dll_SteamAPI_Init</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span> <span class='op'>%</span> <span class='int'>256</span> <span class='op'>!=</span> <span class='int'>0</span>
-  <span class='kw'>if</span> <span class='ivar'>@initted</span>
-    <span class='ivar'>@i_apps</span> <span class='op'>=</span> <span class='cvar'>@@dll_SteamApps</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span>
-    <span class='ivar'>@i_user_stats</span> <span class='op'>=</span> <span class='cvar'>@@dll_SteamUserStats</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span>
+  <span class='ivar'>@initted</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='id identifier rubyid_api_initted'>api_initted</span> <span class='op'>=</span> <span class='cvar'>@@dll_SteamAPI_Init</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span> <span class='op'>%</span> <span class='int'>256</span> <span class='op'>!=</span> <span class='int'>0</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_api_initted'>api_initted</span>
+    <span class='ivar'>@context</span> <span class='op'>=</span> <span class='const'>SteamAPIContext</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+    <span class='kw'>if</span> <span class='ivar'>@context</span><span class='period'>.</span><span class='id identifier rubyid_initted?'>initted?</span>
+      <span class='ivar'>@i_apps</span> <span class='op'>=</span> <span class='ivar'>@context</span><span class='period'>.</span><span class='id identifier rubyid_steam_apps'>steam_apps</span>
+      <span class='ivar'>@i_user_stats</span> <span class='op'>=</span> <span class='ivar'>@context</span><span class='period'>.</span><span class='id identifier rubyid_steam_user_stats'>steam_user_stats</span>
+      <span class='ivar'>@initted</span> <span class='op'>=</span> <span class='kw'>true</span>
+    <span class='kw'>end</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1331,12 +1848,12 @@ this was born.”</p>
       <pre class="lines">
 
 
-269
-270
-271</pre>
+348
+349
+350</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 269</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 348</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_instance'>instance</span>
   <span class='cvar'>@@instance</span>
@@ -1410,12 +1927,12 @@ this was born.”</p>
       <pre class="lines">
 
 
-47
-48
-49</pre>
+126
+127
+128</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 126</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_restart_app_if_necessary'>restart_app_if_necessary</span><span class='lparen'>(</span><span class='id identifier rubyid_app_id'>app_id</span><span class='rparen'>)</span>
   <span class='cvar'>@@dll_SteamAPI_RestartAppIfNecessary</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_app_id'>app_id</span><span class='rparen'>)</span> <span class='op'>%</span> <span class='int'>256</span> <span class='op'>!=</span> <span class='int'>0</span>
@@ -1495,17 +2012,17 @@ this was born.”</p>
       <pre class="lines">
 
 
-193
-194
-195
-196
-197
-198
-199
-200</pre>
+272
+273
+274
+275
+276
+277
+278
+279</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 193</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 272</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_clear_achievement'>clear_achievement</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -1513,7 +2030,7 @@ this was born.”</p>
     <span class='cvar'>@@dll_SteamAPI_ISteamUserStats_StoreStats</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='ivar'>@i_user_stats</span><span class='rparen'>)</span> <span class='op'>%</span> <span class='int'>256</span> <span class='op'>!=</span> <span class='int'>0</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_ok'>ok</span>
   <span class='kw'>else</span>
     <span class='kw'>false</span>
-  <span class='kw'>end</span>    
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1585,18 +2102,18 @@ retrieved.</p>
       <pre class="lines">
 
 
-162
-163
-164
-165
-166
-167
-168
-169
-170</pre>
+241
+242
+243
+244
+245
+246
+247
+248
+249</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 162</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 241</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_achievement'>get_achievement</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -1677,19 +2194,19 @@ unlocked.</p>
       <pre class="lines">
 
 
-206
-207
-208
-209
-210
-211
-212
-213
-214
-215</pre>
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 206</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 285</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_achievement_and_unlock_time'>get_achievement_and_unlock_time</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -1786,16 +2303,16 @@ unlocked.</p>
       <pre class="lines">
 
 
-222
-223
-224
-225
-226
-227
-228</pre>
+301
+302
+303
+304
+305
+306
+307</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 222</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 301</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_achievement_display_attribute'>get_achievement_display_attribute</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -1873,16 +2390,16 @@ unlocked.</p>
       <pre class="lines">
 
 
-245
-246
-247
-248
-249
-250
-251</pre>
+324
+325
+326
+327
+328
+329
+330</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 245</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 324</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_achievement_name'>get_achievement_name</span><span class='lparen'>(</span><span class='id identifier rubyid_achievement'>achievement</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -1940,16 +2457,16 @@ unlocked.</p>
       <pre class="lines">
 
 
-233
-234
-235
-236
-237
-238
-239</pre>
+312
+313
+314
+315
+316
+317
+318</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 233</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 312</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_num_achievements'>get_num_achievements</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -2027,18 +2544,18 @@ unlocked.</p>
       <pre class="lines">
 
 
-110
-111
-112
-113
-114
-115
-116
-117
-118</pre>
+189
+190
+191
+192
+193
+194
+195
+196
+197</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 110</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 189</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_stat_float'>get_stat_float</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -2118,18 +2635,18 @@ unlocked.</p>
       <pre class="lines">
 
 
-96
-97
-98
-99
-100
-101
-102
-103
-104</pre>
+175
+176
+177
+178
+179
+180
+181
+182
+183</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 96</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 175</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_stat_int'>get_stat_int</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -2189,12 +2706,12 @@ unlocked.</p>
       <pre class="lines">
 
 
-39
-40
-41</pre>
+118
+119
+120</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 118</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initted?'>initted?</span>
   <span class='ivar'>@initted</span>
@@ -2269,16 +2786,16 @@ can&#39;t be retrieved.</p>
       <pre class="lines">
 
 
-73
-74
-75
-76
-77
-78
-79</pre>
+152
+153
+154
+155
+156
+157
+158</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 152</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_is_dlc_installed'>is_dlc_installed</span><span class='lparen'>(</span><span class='id identifier rubyid_app_id'>app_id</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -2337,16 +2854,16 @@ returned if ownership status can&#39;t be retrieved.</p>
       <pre class="lines">
 
 
-61
-62
-63
-64
-65
-66
-67</pre>
+140
+141
+142
+143
+144
+145
+146</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 140</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_is_subscribed'>is_subscribed</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -2404,16 +2921,16 @@ returned if ownership status can&#39;t be retrieved.</p>
       <pre class="lines">
 
 
-84
-85
-86
-87
-88
-89
-90</pre>
+163
+164
+165
+166
+167
+168
+169</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 84</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 163</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_request_current_stats'>request_current_stats</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -2491,17 +3008,17 @@ returned if ownership status can&#39;t be retrieved.</p>
       <pre class="lines">
 
 
-257
-258
-259
-260
-261
-262
-263
-264</pre>
+336
+337
+338
+339
+340
+341
+342
+343</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 257</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 336</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reset_all_stats'>reset_all_stats</span><span class='lparen'>(</span><span class='id identifier rubyid_achievements_too'>achievements_too</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -2590,17 +3107,17 @@ returned if ownership status can&#39;t be retrieved.</p>
       <pre class="lines">
 
 
-180
-181
-182
-183
-184
-185
-186
-187</pre>
+259
+260
+261
+262
+263
+264
+265
+266</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 180</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 259</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_achievement'>set_achievement</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -2705,21 +3222,21 @@ returned if ownership status can&#39;t be retrieved.</p>
       <pre class="lines">
 
 
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140</pre>
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 129</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 208</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_stat'>set_stat</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_val'>val</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -2728,7 +3245,7 @@ returned if ownership status can&#39;t be retrieved.</p>
     <span class='kw'>else</span>
       <span class='id identifier rubyid_ok'>ok</span> <span class='op'>=</span> <span class='cvar'>@@dll_SteamAPI_ISteamUserStats_SetStat</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='ivar'>@i_user_stats</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_val'>val</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='rparen'>)</span> <span class='op'>%</span> <span class='int'>256</span> <span class='op'>!=</span> <span class='int'>0</span>
     <span class='kw'>end</span>
-    <span class='cvar'>@@dll_SteamAPI_ISteamUserStats_StoreStats</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='ivar'>@i_user_stats</span><span class='rparen'>)</span> <span class='op'>%</span> <span class='int'>256</span> <span class='op'>!=</span> <span class='int'>0</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_ok'>ok</span>      
+    <span class='cvar'>@@dll_SteamAPI_ISteamUserStats_StoreStats</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='ivar'>@i_user_stats</span><span class='rparen'>)</span> <span class='op'>%</span> <span class='int'>256</span> <span class='op'>!=</span> <span class='int'>0</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_ok'>ok</span>
   <span class='kw'>else</span>
     <span class='kw'>false</span>
   <span class='kw'>end</span>
@@ -2764,17 +3281,17 @@ returned if ownership status can&#39;t be retrieved.</p>
       <pre class="lines">
 
 
-27
-28
-29
-30
-31
-32
-33
-34</pre>
+106
+107
+108
+109
+110
+111
+112
+113</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 106</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_shutdown'>shutdown</span>
   <span class='kw'>if</span> <span class='ivar'>@initted</span>
@@ -2782,7 +3299,7 @@ returned if ownership status can&#39;t be retrieved.</p>
     <span class='ivar'>@i_user_stats</span> <span class='op'>=</span> <span class='kw'>nil</span>
     <span class='cvar'>@@dll_SteamAPI_Shutdown</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span>
     <span class='ivar'>@initted</span> <span class='op'>=</span> <span class='kw'>false</span>
-  <span class='kw'>end</span>    
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2815,12 +3332,12 @@ returned if ownership status can&#39;t be retrieved.</p>
       <pre class="lines">
 
 
-54
-55
-56</pre>
+133
+134
+135</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 54</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 133</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
   <span class='cvar'>@@dll_SteamAPI_RunCallbacks</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span> <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
@@ -2926,24 +3443,24 @@ returned if ownership status can&#39;t be retrieved.</p>
       <pre class="lines">
 
 
-148
-149
-150
-151
-152
-153
-154
-155
-156</pre>
+227
+228
+229
+230
+231
+232
+233
+234
+235</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 148</span>
+      <pre class="code"><span class="info file"># File 'steam_user_stats_lite.rb', line 227</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_avg_rate_stat'>update_avg_rate_stat</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_count_this_session'>count_this_session</span><span class='comma'>,</span> <span class='id identifier rubyid_session_length'>session_length</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_initted?'>initted?</span>
     <span class='id identifier rubyid_packed'>packed</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_pack_double'>pack_double</span> <span class='id identifier rubyid_session_length'>session_length</span>
     <span class='id identifier rubyid_ok'>ok</span> <span class='op'>=</span> <span class='cvar'>@@dll_SteamAPI_ISteamUserStats_UpdateAvgRateStat</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='ivar'>@i_user_stats</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_pack_float'>pack_float</span><span class='lparen'>(</span><span class='id identifier rubyid_count_this_session'>count_this_session</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_packed'>packed</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_packed'>packed</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='op'>%</span> <span class='int'>256</span> <span class='op'>!=</span> <span class='int'>0</span>
-    <span class='cvar'>@@dll_SteamAPI_ISteamUserStats_StoreStats</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='ivar'>@i_user_stats</span><span class='rparen'>)</span> <span class='op'>%</span> <span class='int'>256</span> <span class='op'>!=</span> <span class='int'>0</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_ok'>ok</span>      
+    <span class='cvar'>@@dll_SteamAPI_ISteamUserStats_StoreStats</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='ivar'>@i_user_stats</span><span class='rparen'>)</span> <span class='op'>%</span> <span class='int'>256</span> <span class='op'>!=</span> <span class='int'>0</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_ok'>ok</span>
   <span class='kw'>else</span>
     <span class='kw'>false</span>
   <span class='kw'>end</span>
@@ -2959,9 +3476,9 @@ returned if ownership status can&#39;t be retrieved.</p>
     </div>
 
     <div id="footer">
-  Generated on Sun Nov 15 21:33:59 2015 by
+  Generated on Thu Jun 16 22:00:56 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-2.2.3).
+  0.8.7.6 (ruby-2.3.1).
 </div>
 
   </body>
