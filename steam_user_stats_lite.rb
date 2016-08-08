@@ -18,7 +18,7 @@ class SteamAPIContext
   STEAMUSERSTATS_INTERFACE_VERSION = 'STEAMUSERSTATS_INTERFACE_VERSION011'
   STEAMAPPS_INTERFACE_VERSION = 'STEAMAPPS_INTERFACE_VERSION008'
 
-  # Instantiates a new instance of `SteamAPIContext`.
+  # Instantiates a new instance of +SteamAPIContext+.
   def initialize
     @initted = false
     @h_steam_user = @@dll_SteamAPI_GetHSteamUser.call
@@ -40,21 +40,21 @@ class SteamAPIContext
 
   # Gets the ISteamClient pointer
   #
-  # @return [Fixnum, nil] The ISteamClient pointer if context is initialized, otherwise `nil`.
+  # @return [Fixnum, nil] The ISteamClient pointer if context is initialized, otherwise +nil+.
   def steam_client
     @steam_client if initted?
   end
 
   # Gets the ISteamUserStats pointer
   #
-  # @return [Fixnum, nil] The ISteamUserStats pointer if context is initialized, otherwise `nil`.
+  # @return [Fixnum, nil] The ISteamUserStats pointer if context is initialized, otherwise +nil+.
   def steam_user_stats
     @steam_user_stats if initted?
   end
 
   # Gets the ISteamApps pointer
   #
-  # @return [Fixnum, nil] The ISteamUserStats pointer if context is initialized, otherwise `nil`.
+  # @return [Fixnum, nil] The ISteamUserStats pointer if context is initialized, otherwise +nil+.
   def steam_apps
     @steam_apps if initted?
   end
@@ -82,7 +82,7 @@ end
 # @author cyanic
 class SteamUserStatsLite
 
-  # Instantiates a new instance of `SteamUserStatsLite`.
+  # Instantiates a new instance of +SteamUserStatsLite+.
   def initialize
     @initted = false
     api_initted = @@dll_SteamAPI_Init.call % 256 != 0
@@ -118,7 +118,7 @@ class SteamUserStatsLite
   # Restarts the app if Steamworks is not availble.
   #
   # @param app_id [Integer] The app ID to relaunch as.
-  # @return [true, false] `true` if current instance should exit, `false` if not.
+  # @return [true, false] +true+ if current instance should exit, +false+ if not.
   def self.restart_app_if_necessary(app_id)
     @@dll_SteamAPI_RestartAppIfNecessary.call(app_id) % 256 != 0
   end
@@ -132,7 +132,7 @@ class SteamUserStatsLite
 
   # Checks if current app is owned.
   #
-  # @return [true, false, nil] Whether the current user has a license for the current app. `nil` is returned if ownership status can't be retrieved.
+  # @return [true, false, nil] Whether the current user has a license for the current app. +nil+ is returned if ownership status can't be retrieved.
   def is_subscribed
     if initted?
       @@dll_SteamAPI_ISteamApps_BIsSubscribed.call(@i_apps) % 256 != 0
@@ -144,7 +144,7 @@ class SteamUserStatsLite
   # Checks if a DLC is installed.
   #
   # @param app_id [Integer] The app ID of the DLC to check.
-  # @return [true, false, nil] Whether the DLC is installed. `nil` is returned if the installation status can't be retrieved.
+  # @return [true, false, nil] Whether the DLC is installed. +nil+ is returned if the installation status can't be retrieved.
   def is_dlc_installed(app_id)
     if initted?
       @@dll_SteamAPI_ISteamApps_BIsDlcInstalled.call(@i_apps, app_id) % 256 != 0
@@ -167,7 +167,7 @@ class SteamUserStatsLite
   # Gets the value of an INT stat.
   #
   # @param name [String] The name of the stat.
-  # @return [Integer, nil] The value of the stat, or `nil` if the stat cannot be retrieved.
+  # @return [Integer, nil] The value of the stat, or +nil+ if the stat cannot be retrieved.
   def get_stat_int(name)
     if initted?
       val = ' ' * 4
@@ -181,7 +181,7 @@ class SteamUserStatsLite
   # Gets the value of an FLOAT stat.
   #
   # @param name [String] The name of the stat.
-  # @return [Float, nil] The value of the stat, or `nil` if the stat cannot be retrieved.
+  # @return [Float, nil] The value of the stat, or +nil+ if the stat cannot be retrieved.
   def get_stat_float(name)
     if initted?
       val = ' ' * 4
@@ -233,7 +233,7 @@ class SteamUserStatsLite
   # Gets an achievement's state.
   #
   # @param name [String] The name of the achievement.
-  # @return [true, false, nil] Whether the achievement has unlocked, or `nil` if the achievement cannot be retrieved.
+  # @return [true, false, nil] Whether the achievement has unlocked, or +nil+ if the achievement cannot be retrieved.
   def get_achievement(name)
     if initted?
       val = ' '
@@ -277,7 +277,7 @@ class SteamUserStatsLite
   # Gets an achievement's state and unlock time.
   #
   # @param name [String] The name of the achievement.
-  # @return [<Object, Time>] The achievement's state (`true` or `false`) and the time it was unlocked.
+  # @return [<Object, Time>] The achievement's state (+true+ or +false+) and the time it was unlocked.
   def get_achievement_and_unlock_time(name)
     if initted?
       achieved = ' '
@@ -304,7 +304,7 @@ class SteamUserStatsLite
 
   # Gets the number of achievements.
   #
-  # @return [Integer, nil] The number of achievements, or `nil` if the number cannot be retrieved.
+  # @return [Integer, nil] The number of achievements, or +nil+ if the number cannot be retrieved.
   def get_num_achievements
     if initted?
       @@dll_SteamAPI_ISteamUserStats_GetNumAchievements.call @i_user_stats
