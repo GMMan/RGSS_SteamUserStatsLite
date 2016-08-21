@@ -1,6 +1,6 @@
 # cyanic's Quick and Easy Steamworks Achievements Integration for Ruby
 # https://github.com/GMMan/RGSS_SteamUserStatsLite
-# r4 06/16/16
+# r5 08/08/16
 #
 # Drop steam_api.dll into the root of your project. Requires Steamworks SDK version >= 1.37.
 #
@@ -8,7 +8,7 @@
 #
 
 $imported ||= {}
-$imported['cyanic-SteamUserStatsLite'] = 4 # Slightly unorthodox, it's a version number.
+$imported['cyanic-SteamUserStatsLite'] = 5 # Slightly unorthodox, it's a version number.
 
 # A context class to get Steamworks pointers to interfaces.
 #
@@ -302,6 +302,21 @@ class SteamUserStatsLite
     end
   end
 
+  # Updates achievement progress
+  #
+  # @param name [String] The name of the achievement.
+  # @param cur_progress [Integer] The current progress of the achievement.
+  # @param max_progress [Integer] The maximum progress of the achievement.
+  # @return [true, false] Whether the achievement progress was updated.
+  def indicate_achievement_progress(name, cur_progress, max_progress)
+    if initted?
+      ok = @@dll_SteamAPI_ISteamUserStats_IndicateAchievementProgress.call(@i_user_stats, name, cur_progress.to_i, max_progress.to_i) % 256 != 0
+      @@dll_SteamAPI_ISteamUserStats_StoreStats.call(@i_user_stats) % 256 != 0 && ok
+    else
+      false
+    end
+  end
+
   # Gets the number of achievements.
   #
   # @return [Integer, nil] The number of achievements, or +nil+ if the number cannot be retrieved.
@@ -371,6 +386,7 @@ class SteamUserStatsLite
   @@dll_SteamAPI_ISteamUserStats_ClearAchievement = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_ClearAchievement', 'PP', 'I')
   @@dll_SteamAPI_ISteamUserStats_GetAchievementAndUnlockTime = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_GetAchievementAndUnlockTime', 'PPPP', 'I')
   @@dll_SteamAPI_ISteamUserStats_GetAchievementDisplayAttribute = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_GetAchievementDisplayAttribute', 'PPP', 'P')
+  @@dll_SteamAPI_ISteamUserStats_IndicateAchievementProgress = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_IndicateAchievementProgress', 'PPII', 'I')
   @@dll_SteamAPI_ISteamUserStats_GetNumAchievements = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_GetNumAchievements', 'P', 'I')
   @@dll_SteamAPI_ISteamUserStats_GetAchievementName = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_GetAchievementName', 'PI', 'P')
   @@dll_SteamAPI_ISteamUserStats_StoreStats = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_StoreStats', 'P', 'I')
