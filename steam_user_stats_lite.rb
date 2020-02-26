@@ -1,20 +1,19 @@
 # cyanic's Quick and Easy Steamworks Achievements Integration for Ruby
 # https://github.com/GMMan/RGSS_SteamUserStatsLite
-# r5 08/08/16
+# r6 02/25/20
 #
-# Drop steam_api.dll into the root of your project. Requires Steamworks SDK version >= 1.37.
+# Drop steam_api.dll into the root of your project. Requires Steamworks SDK version >= 1.43.
 #
 # "Miller complained about how hard achievements were to implement in C++, so this was born."
 #
 
 $imported ||= {}
-$imported['cyanic-SteamUserStatsLite'] = 5 # Slightly unorthodox, it's a version number.
+$imported['cyanic-SteamUserStatsLite'] = 6 # Slightly unorthodox, it's a version number.
 
 # A context class to get Steamworks pointers to interfaces.
 #
 # @author cyanic
 class SteamAPIContext
-  STEAMCLIENT_INTERFACE_VERSION = 'SteamClient017'
   STEAMUSERSTATS_INTERFACE_VERSION = 'STEAMUSERSTATS_INTERFACE_VERSION011'
   STEAMAPPS_INTERFACE_VERSION = 'STEAMAPPS_INTERFACE_VERSION008'
 
@@ -22,13 +21,10 @@ class SteamAPIContext
   def initialize
     @initted = false
     @h_steam_user = @@dll_SteamAPI_GetHSteamUser.call
-    if (@h_steam_pipe = @@dll_SteamAPI_GetHSteamPipe.call) != 0
-      return if (@steam_client = @@dll_SteamInternal_CreateInterface.call(STEAMCLIENT_INTERFACE_VERSION)) == 0
-      return if (@steam_user_stats = @@dll_SteamAPI_ISteamClient_GetISteamUserStats.call(@steam_client, @h_steam_user, @h_steam_pipe, STEAMUSERSTATS_INTERFACE_VERSION)) == 0
-      return if (@steam_apps = @@dll_SteamAPI_ISteamClient_GetISteamApps.call(@steam_client, @h_steam_user, @h_steam_pipe, STEAMAPPS_INTERFACE_VERSION)) == 0
+    return if (@steam_user_stats = @@dll_SteamInternal_FindOrCreateUserInterface.call(@h_steam_user, STEAMUSERSTATS_INTERFACE_VERSION)) == 0
+    return if (@steam_apps = @@dll_SteamInternal_FindOrCreateUserInterface.call(@h_steam_user, STEAMAPPS_INTERFACE_VERSION)) == 0
 
-      @initted = true
-    end
+    @initted = true
   end
 
   # Checks if context is initialized.
@@ -36,13 +32,6 @@ class SteamAPIContext
   # @return [true, false] Whether context is initialized.
   def initted?
     @initted
-  end
-
-  # Gets the ISteamClient pointer
-  #
-  # @return [Fixnum, nil] The ISteamClient pointer if context is initialized, otherwise +nil+.
-  def steam_client
-    @steam_client if initted?
   end
 
   # Gets the ISteamUserStats pointer
@@ -70,10 +59,7 @@ class SteamAPIContext
   end
 
   @@dll_SteamAPI_GetHSteamUser = Win32API.new(self.steam_dll_name, 'SteamAPI_GetHSteamUser', '', 'I')
-  @@dll_SteamAPI_GetHSteamPipe = Win32API.new(self.steam_dll_name, 'SteamAPI_GetHSteamPipe', '', 'I')
-  @@dll_SteamInternal_CreateInterface = Win32API.new(self.steam_dll_name, 'SteamInternal_CreateInterface', 'P', 'I')
-  @@dll_SteamAPI_ISteamClient_GetISteamUserStats = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamClient_GetISteamUserStats', 'IIIP', 'I')
-  @@dll_SteamAPI_ISteamClient_GetISteamApps = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamClient_GetISteamApps', 'IIIP', 'I')
+  @@dll_SteamInternal_FindOrCreateUserInterface = Win32API.new(self.steam_dll_name, 'SteamInternal_FindOrCreateUserInterface', 'IP', 'I')
 
 end
 
@@ -92,6 +78,8 @@ class SteamUserStatsLite
         @i_apps = @context.steam_apps
         @i_user_stats = @context.steam_user_stats
         @initted = true
+        self.request_current_stats
+        self.update
       end
     end
   end
