@@ -2,7 +2,7 @@ Someone I know is working on an RPG Maker game, and wanted to add achievements w
 
 Here's how to use the script:
 
-* Copy steam_api.dll from the Steamworks SDK to your project root folder. **Important: you must use Steamworks SDK 1.37 or above!**
+* Copy steam_api.dll from the Steamworks SDK to your project root folder. **Important: you must use Steamworks SDK 1.48 or above for r7!** Check tagged revisions if you need a version for an older SDK version.
 * Paste the script into the script editor.
 * In an event script or wherever you need it, write the following:
 
