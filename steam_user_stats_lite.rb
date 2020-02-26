@@ -1,14 +1,14 @@
 # cyanic's Quick and Easy Steamworks Achievements Integration for Ruby
 # https://github.com/GMMan/RGSS_SteamUserStatsLite
-# r6 02/25/20
+# r7 02/25/20
 #
-# Drop steam_api.dll into the root of your project. Requires Steamworks SDK version >= 1.43.
+# Drop steam_api.dll into the root of your project. Requires Steamworks SDK version >= 1.48.
 #
 # "Miller complained about how hard achievements were to implement in C++, so this was born."
 #
 
 $imported ||= {}
-$imported['cyanic-SteamUserStatsLite'] = 6 # Slightly unorthodox, it's a version number.
+$imported['cyanic-SteamUserStatsLite'] = 7 # Slightly unorthodox, it's a version number.
 
 # A context class to get Steamworks pointers to interfaces.
 #
@@ -159,7 +159,7 @@ class SteamUserStatsLite
   def get_stat_int(name)
     if initted?
       val = ' ' * 4
-      ok = @@dll_SteamAPI_ISteamUserStats_GetStat.call(@i_user_stats, name, val) % 256 != 0
+      ok = @@dll_SteamAPI_ISteamUserStats_GetStatInt32.call(@i_user_stats, name, val) % 256 != 0
       ok ? val.unpack('I')[0] : nil
     else
       nil
@@ -173,7 +173,7 @@ class SteamUserStatsLite
   def get_stat_float(name)
     if initted?
       val = ' ' * 4
-      ok = @@dll_SteamAPI_ISteamUserStats_GetStat0.call(@i_user_stats, name, val) % 256 != 0
+      ok = @@dll_SteamAPI_ISteamUserStats_GetStatFloat.call(@i_user_stats, name, val) % 256 != 0
       ok ? val.unpack('f')[0] : nil
     else
       nil
@@ -192,9 +192,9 @@ class SteamUserStatsLite
   def set_stat(name, val)
     if initted?
       if val.is_a? Float
-        ok = @@dll_SteamAPI_ISteamUserStats_SetStat0.call(@i_user_stats, name, self.class.pack_float(val)) % 256 != 0
+        ok = @@dll_SteamAPI_ISteamUserStats_SetStatFloat.call(@i_user_stats, name, self.class.pack_float(val)) % 256 != 0
       else
-        ok = @@dll_SteamAPI_ISteamUserStats_SetStat.call(@i_user_stats, name, val.to_i) % 256 != 0
+        ok = @@dll_SteamAPI_ISteamUserStats_SetStatInt32.call(@i_user_stats, name, val.to_i) % 256 != 0
       end
       @@dll_SteamAPI_ISteamUserStats_StoreStats.call(@i_user_stats) % 256 != 0 && ok
     else
@@ -364,10 +364,10 @@ class SteamUserStatsLite
   @@dll_SteamAPI_Shutdown = Win32API.new(self.steam_dll_name, 'SteamAPI_Shutdown', '', 'V')
   @@dll_SteamAPI_RunCallbacks = Win32API.new(self.steam_dll_name, 'SteamAPI_RunCallbacks', '', 'V')
   @@dll_SteamAPI_ISteamUserStats_RequestCurrentStats = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_RequestCurrentStats', 'P', 'I')
-  @@dll_SteamAPI_ISteamUserStats_GetStat = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_GetStat', 'PPP', 'I')
-  @@dll_SteamAPI_ISteamUserStats_GetStat0 = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_GetStat0', 'PPP', 'I')
-  @@dll_SteamAPI_ISteamUserStats_SetStat = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_SetStat', 'PPL', 'I')
-  @@dll_SteamAPI_ISteamUserStats_SetStat0 = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_SetStat0', 'PPI', 'I')
+  @@dll_SteamAPI_ISteamUserStats_GetStatInt32 = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_GetStatInt32', 'PPP', 'I')
+  @@dll_SteamAPI_ISteamUserStats_GetStatFloat = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_GetStatFloat', 'PPP', 'I')
+  @@dll_SteamAPI_ISteamUserStats_SetStatInt32 = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_SetStatInt32', 'PPL', 'I')
+  @@dll_SteamAPI_ISteamUserStats_SetStatFloat = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_SetStatFloat', 'PPI', 'I')
   @@dll_SteamAPI_ISteamUserStats_UpdateAvgRateStat = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_UpdateAvgRateStat', 'PPIII', 'I')
   @@dll_SteamAPI_ISteamUserStats_GetAchievement = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_GetAchievement', 'PPP', 'I')
   @@dll_SteamAPI_ISteamUserStats_SetAchievement = Win32API.new(self.steam_dll_name, 'SteamAPI_ISteamUserStats_SetAchievement', 'PP', 'I')
